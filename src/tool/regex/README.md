@@ -15,15 +15,24 @@ except '\n'
 3. **\[C\]** is a regex if C is a valid charset, this means choose one of the 
 character in the charset
 ## Charset Rules
-1. start with the '^' means reverse charset
+1. start with the '^' means reverse charset and '^' can only be the first character
 2. '-' refers to the range, the char before and after
 it should both be digits, uppercase or lowercase. The char after it should
 bigger than the char before it
+3. cannot contains special character except '^', '\\', '-'
+### Strict Expression
+1. x is a charset if x is a ASCII character
+2. xy is a charset if x and y are both charset
+3. x-y is a charset if x and y are both ASCII characters and have the valid range
+4. ^x is a charset if x is a charset, but ^ must be the first character
 ## Special Character
-The characters below either has special function or are the reserved character in regex, 
+The characters below either have special function or are the reserved character in regex, 
 so if you want to use the original meaning of these characters,
-you should add '\' before them to transfer the meaning
+you should add '\\' before them to transfer the meaning
 
 **You need to distinguish between regular expression escape characters and java escape characters**
-### The special Character
+### The special Characters
 \[\]()*+?:$^\-.
+## Writing Regex in Java
+1. Just remember '\\' is '\\\\' in Java
+2. Don't confuse the regular expression escape characters with java escape characters. If you feel confused, you can print the string to show the regex on the console
